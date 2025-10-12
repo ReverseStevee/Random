@@ -26,16 +26,7 @@ function sleep(ms) {
 async function banner() {
 console.clear()
 console.log(`
-\x1b[36m __      __        _      __   __ _____ _        
- \ \    / /       | |     \ \ / // ____| |           
-  \ \  / /__  _ __| |_ ___ \ V /| (___ | |_ _ __ ___  ___ ___  ___ _ _
-   \ \/ / _ \| '__| __/ _ \ > <  \___ \| __| '__/ _ \/ __/ __|/ _ \ '__|
-    \  / (_) | |  | ||  __// . \ ____) | |_| | |  __/\__ \__ \  __/ |   
-     \/ \___/|_|   \__\___/_/ \_\_____/ \__|_|  \___||___/___/\___|_|\x1b[0m
-                                 
-                                 
-                                 
-                                            
+\x1b[36m             RainC2
 `)}
 // [========================================] //
 async function scrapeProxy() {
@@ -84,7 +75,7 @@ async function bootup() {
     const secretBangetJir = await fetch('https://raw.githubusercontent.com/wicaktzy/cache/refs/heads/main/sigma.txt');
     const password = await secretBangetJir.text();
     await console.log(`Input PassKey`)
-    permen.question('[\x1b[1m\x1b[31mVortexSecurityPhase\x1b[0m]: \n', async (skibidi) => {
+    permen.question('[\x1b[1m\x1b[31mSecurityPhase\x1b[0m]: \n', async (skibidi) => {
       if (skibidi === password.trim()) {
         console.log(`Successfuly Login`)
         await scrapeProxy()
@@ -93,7 +84,7 @@ async function bootup() {
         console.log(`|| ▓▓▓▓▓▓▓▓▓▓ || 100%`)
         await sleep(700)
         console.clear()
-        console.log(`Welcome To Vortex Tools ${version}`)
+        console.log(`Welcome To RainC2 Tools ${version}`)
         await sleep(1000)
 		    await banner()
         console.log(`Type "help" For Showing All Available Command`)
@@ -182,7 +173,7 @@ async function handleAttackCommand(args) {
         console.clear();
         console.log(`
 ⣀⣀⣀⣠⣤⣤⣤⠤⡀        
-⣠⣤⣤⣤⡤\x1b[91m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by VortexZCoderX -\x1b[0m
+⣠⣤⣤⣤⡤\x1b[91m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Custom Ubuntu -\x1b[0m
 ⢨⣭⣭⡅\x1b[91m⣼⣿⣿⡇⠈⢻⣮⡑⣦\x1b[0m⡙\x1b[0m⢦⣄⡀    ⠀\x1b[47m \x1b[31m- Attacks Details -\x1b[0m
 ⣄⢻⣿⣧\x1b[91m⠻⠿⠋ ⠛ ⢘⣿⢰\x1b[0m⣿⣦⡀⢍⣂  ⠀⠀Target   : [ \x1b[34m${target}\x1b[0m ]
 ⠈⣃⡙⢿⣧\x1b[91m⣙⠶⣿⣿⡷⢘\x1b[0m⣡⣿⣿⣿⣿⣆⠹⠂⠀ ⠀Duration : [ \x1b[34m${duration}\x1b[0m ]
@@ -193,8 +184,8 @@ async function handleAttackCommand(args) {
 \x1b[91m  ⣿\x1b[0m        \x1b[91m  ⠃\x1b[0m       ⠀IP⠀      : [ \x1b[34m${result.query}\x1b[0m ]
  \x1b[91m ⠘\x1b[0m                  ⠀ISP      : [ \x1b[34m${result.isp}\x1b[0m ]
 ⠀⠀  
-                      My Telegram [ \x1b[34m t.me/wicaktzy \x1b[0m ]
-                      Power Proof [ \x1b[34m t.me/VortexStresserX \x1b[0m ]
+                      Project Made By [ \x1b[34m Gwyn/Stevee \x1b[0m ]
+                      YT [ \x1b[34m https://www.youtube.com/@steveeplayer \x1b[0m ]
         `);
     } catch (error) {
         console.log(`Oops Something Went wrong`);
@@ -338,7 +329,7 @@ async function handleAttackL4(args) {
     console.clear();
     console.log(`
 ⣀⣀⣀⣠⣤⣤⣤⠤⡀        
-⣠⣤⣤⣤⡤\x1b[91m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Vortex -\x1b[0m
+⣠⣤⣤⣤⡤\x1b[91m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Custom Ubuntu -\x1b[0m
 ⢨⣭⣭⡅\x1b[91m⣼⣿⣿⡇⠈⢻⣮⡑⣦\x1b[0m⡙\x1b[0m⢦⣄⡀    ⠀\x1b[47m \x1b[31m- Attacks Details -\x1b[0m
 ⣄⢻⣿⣧\x1b[91m⠻⠿⠋ ⠛ ⢘⣿⢰\x1b[0m⣿⣦⡀⢍⣂  ⠀⠀Target   : [ \x1b[34m${targetL4}\x1b[0m ]
 ⠈⣃⡙⢿⣧\x1b[91m⣙⠶⣿⣿⡷⢘\x1b[0m⣡⣿⣿⣿⣿⣆⠹⠂⠀ ⠀Port     : [ \x1b[34m${port}\x1b[0m ]
@@ -349,8 +340,8 @@ async function handleAttackL4(args) {
 \x1b[91m  ⣿\x1b[0m        \x1b[91m  ⠃\x1b[0m       ⠀IP⠀      : [ \x1b[34m${resultL4.query}\x1b[0m ]
  \x1b[91m ⠘\x1b[0m                  ⠀ISP      : [ \x1b[34m${resultL4.isp}\x1b[0m ]
 ⠀⠀  
-                      My Telegram [ \x1b[34m t.me/wicaktzy \x1b[0m ]
-                      Power Proof [ \x1b[34m t.me/VortexStresserX \x1b[0m ]
+                      Project Made By [ \x1b[34m Gwyn/Stevee \x1b[0m ]
+                      YT [ \x1b[34m https://www.youtube.com/@steveeplayer \x1b[0m ]
 `);
   } catch (error) {
     console.log(`Oops Something Went wrong`);
@@ -395,7 +386,7 @@ async function AttackBotnetEndpoints(args) {
         console.clear();
         console.log(`
 ⣀⣀⣀⣠⣤⣤⣤⠤⡀        
-⣠⣤⣤⣤⡤\x1b[35m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by VortexZCoderX -\x1b[0m
+⣠⣤⣤⣤⡤\x1b[35m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Custom Ubuntu -\x1b[0m
 ⢨⣭⣭⡅\x1b[34m⣼⣿⣿⡇⠈⢻⣮⡑⣦\x1b[0m⡙\x1b[0m⢦⣄⡀    ⠀\x1b[47m \x1b[31m- Attacks Details -\x1b[0m
 ⣄⢻⣿⣧\x1b[36m⠻⠿⠋ ⠛ ⢘⣿⢰\x1b[0m⣿⣦⡀⢍⣂  ⠀⠀Target   : [ \x1b[34m${target}\x1b[0m ]
 ⠈⣃⡙⢿⣧\x1b[91m⣙⠶⣿⣿⡷⢘\x1b[0m⣡⣿⣿⣿⣿⣆⠹⠂⠀ ⠀Duration : [ \x1b[34m${duration}\x1b[0m ]
@@ -407,9 +398,8 @@ async function AttackBotnetEndpoints(args) {
  \x1b[91m ⠘\x1b[0m                  ⠀ISP      : [ \x1b[34m${result.isp}\x1b[0m ]
   \x1b[91m ⠘\x1b[0m                  ⠀BOTNET      : [ \x1b[34m${successCount}\x1b[0m ]
 ⠀⠀  
-                      My Telegram [ \x1b[34m t.me/wicaktzy \x1b[0m ]
-                      Power Proof [ \x1b[34m t.me
-VortexStresserX \x1b[0m ]
+                      Project Made By [ \x1b[34m Gwyn/Stevee \x1b[0m ]
+                      YT [ \x1b[34m https://www.youtube.com/@steveeplayer \x1b[0m ]
 Please After Attack Type [\x1b[1m\x1b[35mcls\x1b[0m] To Return To The Home
 `);
         sigma();
@@ -417,6 +407,13 @@ Please After Attack Type [\x1b[1m\x1b[35mcls\x1b[0m] To Return To The Home
         console.error('Error retrieving target information:', error.message);
     }
 
+    const [target, duration, methods] = args;
+let botnetData;
+let successCount = 0;
+const timeout = 20000;
+    
+    
+async function checkBotnetEndpoints() {
     let botnetData;
     let successCount = 0;
     const timeout = 20000;
@@ -608,17 +605,12 @@ async function sigma() {
 const getNews = await fetch(`https://raw.githubusercontent.com/permenmd/cache/main/news.txt`)
 const latestNews = await getNews.text();
 const creatorCredits = `
-Created By WicakZCoderX
-
-Thx To:
-Jojo (Best Friend)
-Steven (Best Teacher)
-Zenn (Supporter)
-Dany (First Buyer Vortex)
+Created By Gwyn/Stevee
+Thanks to WormGPT for fixing this code
 `
 
 permen.question(
-  chalk.bgWhite.red('VorteXC2ApiSystem') + chalk.reset(' > '),
+  chalk.bgWhite.red('RainC2') + chalk.reset(' > '),
   (input) => {
     const [command, ...args] = input.trim().split(/\s+/);
 
@@ -644,32 +636,32 @@ botnet-mt  | ---              | Botnet Methods
 
 NAME       │ DESCRIPTION                                 │ DURATION
 ───────────┼─────────────────────────────────────────────┼────────────
-glory      │ Layer 7 - Attack URL [Best]                 │ 300
-flood      │ Layer 7 - Attack URL [Best]                 │ 300
-storm      │ Layer 7 - Attack URL [Standard]             │ 300
-ninja      │ Layer 7 - Attack URL [Standard]             │ 300
-thunder    │ Layer 7 - Attack URL [Normal]               │ 300
-https      │ Layer 7 - Attack URL [Normal]               │ 300
-httpx      │ Layer 7 - Attack URL [Normal]               │ 300
-bypass     │ Layer 7 - Attack URL [Normal]               │ 300
-h2         │ Layer 7 - Attack URL [Normal]               │ 300
-cf         │ Layer 7 - Attack URL [Normal]               │ 300
-xyn        │ Layer 7 - Attack URL [Normal]               │ 300
-blast      │ Layer 7 - Attack URL [Normal]               │ 300
-uam        │ Layer 7 - Attack URL [Normal]               │ 300
-maklo      | Layer 7 - Attack URL [High]                 | 300
-raw        │ Layer 7 - Attack URL [Normal]               │ 300
-quantum    │ Layer 7 - Attack URL [Normal]               │ 300
-h2-meris   │ Layer 7 - Attack URL [Best] [SUPERVIP]      │ 300
-h2-raw     | Layer 7 - Attack URL  [Low]                 | 300
-cibi       | Layer 7 - Attack URL  [Best]  [VIP]         | 300
-fire       | Layer 7 - Attack URL  [Best]                | 300
-browser    │ Layer 7 - Attack URL [Normal]               │ 300
-tls        │ Layer 7 - Attack URL [Normal]               │ 300
-pidoras    │ Layer 7 - Attack URL [Best]                 │ 300
-thspeed    │ Layer 7 - Attack URL [Best]                 │ 300
-udp        │ Layer 4 - Attack Ip port [Normal]           │ 300
-tcp        │ Layer 4 - Attack Ip port [Normal]           │ 300
+glory      │ Layer 7 - Attack URL 
+flood      │ Layer 7 - Attack URL
+storm      │ Layer 7 - Attack URL 
+ninja      │ Layer 7 - Attack URL
+thunder    │ Layer 7 - Attack URL
+https      │ Layer 7 - Attack URL
+httpx      │ Layer 7 - Attack URL
+bypass     │ Layer 7 - Attack URL 
+h2         │ Layer 7 - Attack URL 
+cf         │ Layer 7 - Attack URL 
+xyn        │ Layer 7 - Attack URL 
+blast      │ Layer 7 - Attack URL 
+uam        │ Layer 7 - Attack URL 
+maklo      | Layer 7 - Attack URL
+raw        │ Layer 7 - Attack URL 
+quantum    │ Layer 7 - Attack URL
+h2-meris   │ Layer 7 - Attack URL
+h2-raw     | Layer 7 - Attack URL
+cibi       | Layer 7 - Attack URL
+fire       | Layer 7 - Attack URL
+browser    │ Layer 7 - Attack URL
+tls        │ Layer 7 - Attack URL
+pidoras    │ Layer 7 - Attack URL
+thspeed    │ Layer 7 - Attack URL
+udp        │ Layer 4 - Attack Ip port
+tcp        │ Layer 4 - Attack Ip port
 
                \x1b[36m𝐕𝐨𝐫𝐭𝐞𝐗𝐄𝐱𝐞𝐂𝐮𝐭𝐢𝐨𝐧𝐕𝐚𝐮𝐥𝐭\x1b[0m              
 `);
@@ -708,8 +700,6 @@ ${creatorCredits}`);
     sigma()
   } else if (command === 'botnet-mt') {
     console.log(`
-    █░░ ▄▀█ █▄█ █▀▀ █▀█ ▀▀█     
-█▄▄ █▀█ ░█░ ██▄ █▀▄ ░░█ 
 ──────────────────────────────
 ► VIP
      - raw      │  - strike
