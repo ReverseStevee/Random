@@ -1,0 +1,17 @@
+[
+    {"name": "zeus-flood", "description": "Layer 7 - Attack Url [VVIP]", "duration": "999999999"},
+    {"name": "zeus-tls", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "zs-browser", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "zs-bypass", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "zeus-flash", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "zeus-love", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "zeus-raw", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "zeus-sad", "description": "Layer 7 - Attack Url [VVIP]", "duration": "9999999999"},    
+    {"name": "deathping", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "udp", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "tcp", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "kill-ping", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "kill-do", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "samp", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"},
+    {"name": "mc", "description": "Layer 4 - Attack Url [VVIP]", "duration": "9999999999"}
+]
